@@ -1,5 +1,28 @@
 N = list(map(int, raw_input().split()))
 
+class Tree(object):
+
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.parent = None
+        self.data = data
+
+    def insert(self, data):
+        if self.data:
+            if self.data > data:
+                if self.left is None:
+                    self.left = Tree(data)
+                else:
+                    self.left.insert(data)
+            else:
+                if self.right is None:
+                    self.right = Tree(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
+
 def reduceSUM(x, y):
     return x+y
 
@@ -34,4 +57,11 @@ def blance():
 
 if __name__ == "__main__":
     #task()
-    print ("ix = ",blance())
+    #print ("ix = ",blance())
+
+    T = Tree(None)
+    for r in N:
+        T.insert(r)
+
+
+    print ("Tree left = ", T)
