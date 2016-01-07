@@ -23,6 +23,17 @@ class Tree(object):
         else:
             self.data = data
 
+    def Print(self, str = ""):
+        str = "{} {}".format(str, self.data)
+        if self.left is not None:
+            self.left.Print(str)
+
+        if self.right is not None:
+            self.right.Print(str)
+
+        if self.left is None and self.right is None:
+            print(str)
+
 def reduceSUM(x, y):
     return x+y
 
@@ -64,4 +75,4 @@ if __name__ == "__main__":
         T.insert(r)
 
 
-    print ("Tree left = ", T)
+    print ("Tree left = ", T.Print())
