@@ -1,9 +1,18 @@
-N = list(map(int, input().split()))
+N = list(map(int, raw_input().split()))
 
-for index, j in enumerate(N):
+def reduceSUM(x, y):
+    return x+y
 
-    Right  = sum(N) - j if (index == 0) else sum(N[index+1:])
+def task():
+    q = reduce(reduceSUM, N)
+    print("qq = ", q)
 
-    Left = sum(N) - j if (index == len(N) - 1) else sum(N[0:index])
+    for index, j in enumerate(N):
+        Right  = reduce(reduceSUM, N) - j if (index == 0) else sum(N[index+1:])
 
-    print ("Left = ", Left , "Right = ", Right)
+        Left = sum(N) - j if (index == len(N) - 1) else sum(N[0:index])
+
+        print ("Left = ", Left , "Right = ", Right)
+
+if __name__ == "__main__":
+    task()
