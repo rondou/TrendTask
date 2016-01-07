@@ -3,10 +3,14 @@ N = list(map(int, raw_input().split()))
 def reduceSUM(x, y):
     return x+y
 
-def task():
-    q = reduce(reduceSUM, N)
-    print("qq = ", q)
+def sortCheck(x = []):
+    for i, j in enumerate(x):
+        if (len(x)-1 > i):
+            if (j > x[i + 1]):
+                return False
+    return True
 
+def task():
     for index, j in enumerate(N):
         Right  = reduce(reduceSUM, N) - j if (index == 0) else sum(N[index+1:])
 
@@ -14,5 +18,20 @@ def task():
 
         print ("Left = ", Left , "Right = ", Right)
 
+def blance():
+    w = (len(N) / 2)
+    for index, j in enumerate(N):
+        if index < w:
+            print ("head = ", index, "tail = ", len(N) - index - 1)
+            if (N[index] > N[len(N) - index - 1]):
+                N[index], N[len(N) - index - 1] = N[len(N) - index - 1], N[index]
+                if (sortCheck(N)):
+                    return True
+                else:
+                    N[index], N[len(N) - index - 1] = N[len(N) - index - 1], N[index]
+    print ("N = ", N)
+    return sortCheck(N)
+
 if __name__ == "__main__":
-    task()
+    #task()
+    print ("ix = ",blance())
