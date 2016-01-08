@@ -37,6 +37,12 @@ class Tree(object):
 def reduceSUM(x, y):
     return x+y
 
+def checkSorted(x, y):
+    if (x == False) : return  False
+    if (x > y): return False
+
+    return y
+
 def sortCheck(x = []):
     for i, j in enumerate(x):
         if (len(x)-1 > i):
@@ -59,20 +65,33 @@ def blance():
             print ("head = ", index, "tail = ", len(N) - index - 1)
             if (N[index] > N[len(N) - index - 1]):
                 N[index], N[len(N) - index - 1] = N[len(N) - index - 1], N[index]
-                if (sortCheck(N)):
+                if (False != reduce(checkSorted, N)):
                     return True
                 else:
                     N[index], N[len(N) - index - 1] = N[len(N) - index - 1], N[index]
+
+                #if (sortCheck(N)):
+                #    return True
+                #else:
+                #    N[index], N[len(N) - index - 1] = N[len(N) - index - 1], N[index]
+
     print ("N = ", N)
-    return sortCheck(N)
+    return False != reduce(checkSorted, N)
 
 if __name__ == "__main__":
     #task()
-    #print ("ix = ",blance())
+    print ("ix = ",blance())
 
-    T = Tree(None)
-    for r in N:
-        T.insert(r)
+    #T = Tree(None)
+    #for r in N:
+    #    T.insert(r)
+
+    #yy = reduce(checkSorted, N)
+
+    #if (yy != False):
+    #    print("isSorted = ", yy)
+    #else:
+    #    print("isSorted = ", "True")
 
 
-    print ("Tree left = ", T.Print())
+    #print ("Tree left = ", T.Print())
